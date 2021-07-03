@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Web App</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="icon" href="https://image.flaticon.com/icons/png/512/4220/4220563.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- main script -->
+    <script>
+        "use strict";
+        function submitForm(oFormElement) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var result = parseFloat(xhr.responseText);
+                var resultElement = document.getElementById('result');
+                if (result == 0) {
+                    resultElement.className = 'bg-danger';
+                    resultElement.innerHTML = 'Your review is NEGATIVE! 😞';
+                } else {
+                    resultElement.className = 'bg-success';
+                    resultElement.innerHTML = 'Your review is POSITIVE! 😄';
+                }
+            }
+            xhr.open(oFormElement.method, oFormElement.action, true);
+            var review = document.getElementById('review');
+            xhr.send(review.value);
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="./img/logo.svg" width="25%" alt="logo" title='dots.ai'>
+            <h4 class="logo">dots.ai</h4>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a class="nav-link" href="#">Home</a></li>
+                <li><a class="nav-link" href="#">Contact</a></li>
+                <li><a class="nav-link" href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="login">
+            <img src="./img/login.svg" width="12%" alt="login" title='Login'>
+        </div>
+    </header>
+
+    <main>
+        <div class="introduction-container">
+            <div class="intro-text">
+                <h1>Is your review positive or negative?</h1>
+                <p>Type your review below and click submit to find out.</p>
+            </div>
+            <form method="POST" action="**REPLACE WITH PUBLIC API URL**" onsubmit="return submitForm(this);">
+                <!-- HERE IS WHERE YOU NEED TO ENTER THE API URL -->
+                <div class="form-group">
+
+                    <textarea class="form-control" rows="10" id="review" required
+                        placeholder="Please write your review here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">SUBMIT</button>
+                <button type="reset" class="btn btn-default">CLEAR</button>
+            </form>
+        </div>
+
+        <div class="results">
+            <h2 class="bg-success" id="result"></h2>
+        </div>
+        <div class="background-circles">
+            <img class='small-circle' src="./img/small-eclipse.svg" alt="">
+            <img class='mid-circle' src="./img/mid-eclipse.svg" alt="">
+            <img class='big-circle' src="./img/big-eclipse.svg" alt="">
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3>dots.ai</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo iste corrupti doloribus odio sed!</p>
+            <ul class="socials">
+                <li><a href="https://github.com/kfrawee" target="_blank"><i class="fa fa-github"></i></a></li>
+                <li><a href="https://twitter.com/kfrawee" target="_blank"><i class="fa fa-b fa-twitter"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/kfrawee/" target="_blank"><i
+                            class="fa fa-linkedin-square"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>"Sentiment Analysis Web App" is a project from Udacity's Deep Learning Nanodegree.</p>
+            <p>Copyright &copy; 2021 - kfrawee</p>
+        </div>
+    </footer>
+</body>
+
+</html>
