@@ -28,10 +28,16 @@ header {
     flex: 1;
 }
 
+
 .logo {
     font-size: 22px;
     font-weight: 400;
     margin: 20px;
+}
+
+.logo-icon:hover {
+    /* background: green; */
+    opacity: 50%;
 }
 
 nav {
@@ -51,12 +57,20 @@ nav {
 	font-size: 18px;
     font-weight: 400;
 	text-decoration: none;
+}
+.nav-link:hover {
+    color: #4e4e77;
+    font-weight: bold;
     
 }
 .login {
     /* background: green; */
     flex: 1;
     justify-content: flex-end;
+}
+.login:hover {
+    /* background: green; */
+    opacity: 50%;
 }
 
 
